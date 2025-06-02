@@ -1,0 +1,16 @@
+<div class="login-container">
+  <div class="login-card">
+    <h2>Iniciar Sesión</h2>
+
+    <form (ngSubmit)="login()" class="login-form">
+      <input [(ngModel)]="username" name="username" required placeholder="Correo electrónico" type="email" />
+      <input [(ngModel)]="password" name="password" type="password" required placeholder="Contraseña" />
+      <button type="submit" [disabled]="isLoading">{{ isLoading ? 'Cargando...' : 'Ingresar' }}</button>
+    </form>
+
+    <div *ngIf="errorMessage" class="error-msg">
+      {{ errorMessage }}
+    </div>
+    <div class="spinner" *ngIf="isLoading"></div>
+  </div>
+</div>

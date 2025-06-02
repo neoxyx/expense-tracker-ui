@@ -1,0 +1,56 @@
+<div class="container" [formGroup]="form">
+  <h2 class="title">Consulta de Movimientos</h2>
+
+  <div class="form-grid">
+    <div>
+      <label class="label">Desde</label>
+      <input type="date" formControlName="dateFrom" class="input" />
+    </div>
+    <div>
+      <label class="label">Hasta</label>
+      <input type="date" formControlName="dateTo" class="input" />
+    </div>
+  </div>
+
+  <div class="button-container">
+    <button (click)="search()" [disabled]="form.invalid" class="button">
+      Consultar
+    </button>
+  </div>
+
+  <div *ngIf="movements.length > 0" class="table-container">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Fecha</th>
+          <th>Tipo</th>
+          <th>Fondo</th>
+          <th>Monto</th>
+          <th>Comercio</th>
+          <th>Detalles</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let mov of movements">
+          <td>{{ mov.date | date:'shortDate' }}</td>
+          <td>{{ mov.movementType || '-' }}</td>
+          <td>{{ mov.fundName || '-' }}</td>
+          <td>{{ mov.amount | currency:'USD' }}</td>
+          <td>{{ mov.commerceName || '-' }}</td>
+          <td>
+            <ul *ngIf="mov.details?.length && mov.details.length > 0; else sinDetalles">
+              <li *ngFor="let det of mov.details">
+                - {{ getExpenseTypeName(det.expenseTypeId) }}: {{ det.amount | currency:'USD' }}
+              </li>
+            </ul>
+            <ng-template #sinDetalles>-</ng-template>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="movements.length === 0 && form.valid && isLoading" class="no-results">
+    No hay movimientos para el rango de fechas seleccionado.
+  </div>
+</div>

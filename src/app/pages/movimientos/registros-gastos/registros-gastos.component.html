@@ -1,0 +1,66 @@
+<div class="rg-container">
+  <h2>Registro de Gastos</h2>
+  <form [formGroup]="form" (ngSubmit)="save()">
+
+    <div class="row">
+      <label for="date">Fecha</label>
+      <input id="date" type="date" formControlName="Date" />
+    </div>
+
+    <div class="row">
+      <label for="fundId">Fondo Monetario</label>
+      <select id="fundId" formControlName="MonetaryFundId">
+        <option value="" disabled selected>Seleccione un fondo</option>
+        <option [value]="f.id" *ngFor="let f of funds">{{f.name}}</option>
+      </select>
+    </div>
+
+    <div class="row">
+      <label for="commerceName">Nombre de Comercio</label>
+      <input id="commerceName" type="text" formControlName="CommerceName" />
+    </div>
+
+    <div class="row">
+      <label for="documentType">Tipo de Documento</label>
+      <select id="documentType" formControlName="DocumentType">
+        <option>Comprobante</option>
+        <option>Factura</option>
+        <option>Otro</option>
+      </select>
+    </div>
+
+    <div class="row">
+      <label for="observations">Observaciones</label>
+      <textarea id="observations" formControlName="Observations"></textarea>
+    </div>
+
+    <h3>Detalle</h3>
+    <div formArrayName="Details">
+      <div *ngFor="let grp of Details.controls; let i = index" [formGroupName]="i" class="detail-row">
+        <select formControlName="ExpenseTypeId">
+          <option [value]="t.id" *ngFor="let t of expenseTypes">{{t.name}}</option>
+        </select>
+        <input type="number" formControlName="Amount" placeholder="Monto" />
+        <button type="button" class="btn-remove" (click)="removeDetail(i)">✕</button>
+      </div>
+      <button type="button" (click)="addDetail()">+ Agregar detalle</button>
+    </div>
+
+    <div class="actions">
+      <button type="submit" [disabled]="isLoading">
+        {{ isLoading ? 'Guardando...' : 'Guardar' }}
+      </button>
+    </div>
+  </form>
+
+  <div *ngIf="alerts.length" class="alerts">
+    <h4>¡Atención! Sobregiro en:</h4>
+    <ul>
+      <li *ngFor="let a of alerts">
+        Tipo {{ a.ExpenseTypeId }}: Presupuestos {{ a.Budgeted }} + Sobregiro {{ a.OverrunBy }}
+      </li>
+    </ul>
+  </div>
+
+  <div *ngIf="errorMsg" class="error">{{ errorMsg }}</div>
+</div>

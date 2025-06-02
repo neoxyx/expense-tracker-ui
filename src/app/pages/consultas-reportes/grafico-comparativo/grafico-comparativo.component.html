@@ -1,0 +1,21 @@
+<div class="container" [formGroup]="form">
+  <h2>Gráfico Comparativo</h2>
+  <div class="form-grid">
+    <div>
+      <label class="label">Desde</label>
+      <input type="date" formControlName="dateFrom" class="input" />
+    </div>
+    <div>
+      <label class="label">Hasta</label>
+      <input type="date" formControlName="dateTo" class="input" />
+    </div>
+  </div>
+
+  <div class="button-container">
+    <!--<button (click)="generate()" [disabled]="form.invalid" class="button">
+      Consultar
+    </button>-->
+  </div>
+  <canvas id="barChart" *ngIf="!isLoading"></canvas>
+  <div *ngIf="errorMsg" class="no-results">{{ errorMsg }}</div>
+</div>

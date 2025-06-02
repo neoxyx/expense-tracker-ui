@@ -1,0 +1,35 @@
+<div class="dashboard-container">
+  <aside class="sidebar">
+    <nav>
+      <h3>Mantenimientos</h3>
+      <ul>
+        <li><a routerLink="tipos-gasto" routerLinkActive="active">Tipos de Gasto</a></li>
+        <li><a routerLink="fondo-monetario" routerLinkActive="active">Fondo Monetario</a></li>
+      </ul>
+
+      <h3>Movimientos</h3>
+      <ul>
+        <li><a routerLink="presupuesto" routerLinkActive="active">Presupuesto por tipo de gasto</a></li>
+        <li><a routerLink="gastos" routerLinkActive="active">Registros de gastos</a></li>
+        <li><a routerLink="depositos" routerLinkActive="active">Depósitos</a></li>
+      </ul>
+
+      <h3>Consultas y Reportes</h3>
+      <ul>
+        <li><a routerLink="consulta-movimientos" routerLinkActive="active">Consulta de movimientos</a></li>
+        <li><a routerLink="grafico-comparativo" routerLinkActive="active">Gráfico Comparativo</a></li>
+      </ul>
+
+      <h2>
+        <button (click)="logout()" class="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700">
+          Cerrar sesión
+        </button>
+
+      </h2>
+    </nav>
+  </aside>
+
+  <main class="content">
+    <router-outlet></router-outlet>
+  </main>
+</div>
