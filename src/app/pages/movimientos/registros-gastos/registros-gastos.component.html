@@ -43,13 +43,19 @@
         <input type="number" formControlName="Amount" placeholder="Monto" />
         <button type="button" class="btn-remove" (click)="removeDetail(i)">✕</button>
       </div>
-      <button type="button" (click)="addDetail()">+ Agregar detalle</button>
+      <div class="button-container">
+        <button type="button" (click)="addDetail()" class="button">
+          + Agregar detalle
+        </button>
+      </div>
     </div>
 
     <div class="actions">
-      <button type="submit" [disabled]="isLoading">
-        {{ isLoading ? 'Guardando...' : 'Guardar' }}
-      </button>
+      <div class="button-container">
+        <button type="submit" [disabled]="isLoading" class="button">
+          {{ isLoading ? 'Guardando...' : 'Guardar' }}
+        </button>
+      </div>
     </div>
   </form>
 

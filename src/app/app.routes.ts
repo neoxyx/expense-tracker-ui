@@ -5,10 +5,10 @@ import { TiposGastoComponent } from './pages/mantenimientos/tipos-gasto.componen
 import { RegistrosGastosComponent } from './pages/movimientos/registros-gastos/registros-gastos.component';
 import { PresupuestoComponent } from './pages/movimientos/presupuesto/presupuesto.component';
 import { DepositosComponent } from './pages/movimientos/depositos/depositos.component';
-import { FondoMonetarioComponent } from './pages/mantenimientos/fondo-monetario.component';
 import { GraficoComparativoComponent } from './pages/consultas-reportes/grafico-comparativo/grafico-comparativo.component';
 import { ConsultaMovimientosComponent } from './pages/consultas-reportes/consulta-movimientos/consulta-movimientos.component';
 import { authGuard } from './guards/auth.guard';
+import { FondoMonetarioComponent } from './pages/mantenimientos/fondo-monetario/fondo-monetario/fondo-monetario.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },

@@ -1,1 +1,26 @@
-<p>presupuesto works!</p>
+<div *ngIf="loading">Cargando...</div>
+<div *ngIf="error" class="alert alert-danger">{{ error }}</div>
+
+<table *ngIf="!loading && !error" class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Tipo de Gasto</th>
+      <th>Presupuestado</th>
+      <th>Gastado</th>
+      <th>Restante</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of data">
+      <td>{{ item.expenseTypeName }}</td>
+      <td>{{ item.budgeted | currency:'USD' }}</td>
+      <td>{{ item.spent | currency:'USD' }}</td>
+      <td [ngClass]="{
+            'text-success': item.remaining >= 0,
+            'text-danger': item.remaining < 0
+          }">
+        {{ item.remaining | currency:'USD' }}
+      </td>
+    </tr>
+  </tbody>
+</table>

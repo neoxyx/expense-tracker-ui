@@ -36,9 +36,9 @@ export class RegistrosGastosComponent implements OnInit {
 
   ngOnInit(): void {
     this.addDetail();
-    this.fundService.getFunds().subscribe({
+    this.fundService.getAll().subscribe({
       next: res => {
-        this.funds = res.data;
+        this.funds = res;
       },
       error: err => console.error('Error al cargar fondos', err)
     });

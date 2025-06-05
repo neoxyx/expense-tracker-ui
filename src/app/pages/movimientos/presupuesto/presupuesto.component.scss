@@ -1,0 +1,19 @@
+/* budget-vs-expense.component.scss */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+
+  th, td {
+    padding: 8px;
+    border-bottom: 1px solid #ccc;
+  }
+}
+
+.text-success {
+  color: green;
+}
+
+.text-danger {
+  color: red;
+}

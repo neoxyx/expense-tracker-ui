@@ -21,9 +21,11 @@
     </div>
 
     <div class="actions">
-      <button type="submit" [disabled]="isLoading">
-        {{ isLoading ? 'Guardando...' : 'Guardar' }}
-      </button>
+      <div class="button-container">
+        <button type="submit" [disabled]="isLoading" class="button">
+          {{ isLoading ? 'Guardando...' : 'Guardar' }}
+        </button>
+      </div>
     </div>
   </form>
 
